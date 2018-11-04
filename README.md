@@ -1,18 +1,12 @@
-# Unity-ThirdPersonController
+# Unity-ThirdPersonController (HDRP Version)
 
 Third Person Controller for Unity. </br>
-I don't use physics and <a href="http://docs.unity3d.com/ScriptReference/Rigidbody.html">Rigidbody</a> to control the character. Instead I use a <a href="http://docs.unity3d.com/Manual/class-CharacterController.html">CharacterController</a> component and custom gravity.
 
-![gif](https://github.com/dbrizov/dbrizov.github.io/blob/master/images/project-images/character-controller/camera_occlusion.gif)
-![gif](https://github.com/dbrizov/dbrizov.github.io/blob/master/images/project-images/character-controller/jogging.gif)
-![gif](https://github.com/dbrizov/dbrizov.github.io/blob/master/images/project-images/character-controller/jumping.gif)
-![gif](https://github.com/dbrizov/dbrizov.github.io/blob/master/images/project-images/character-controller/sprinting.gif)
-![gif](https://github.com/dbrizov/dbrizov.github.io/blob/master/images/project-images/character-controller/walking.gif)
+Forked from dbrizov/Unity-THirdPersonController
 
 ## System Requirements
 
-Unity 5.0 or later versions.<br />
-I actually created the controller with Unity 5.0 and haven't tried to run it with an older version. If you are using an older version of Unity, feel free to try it out. I don't think there are any reasons for it not to run in Unity 4.6.
+Unity 2018.3 or later versions.<br />
 
 ## Used Assets
 
@@ -40,6 +34,7 @@ The character and the animations are taken from <a href="https://www.mixamo.com/
 The MIT License (MIT)
 
 Copyright (c) 2015 Denis Rizov
+Copyright (c) 2018 Thomas Iché
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
