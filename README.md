@@ -10,7 +10,7 @@ Unity 2018.3 or later versions.<br />
 
 ## Used Assets
 
-The character and the animations are taken from <a href="https://www.mixamo.com/">Mixamo</a>. Just check it out. All of the characters are free to use. There are also many free animations, and the first 20 animations you buy are free of charge.
+The character and the animations are taken from <a href="https://www.mixamo.com/">Mixamo</a>. All sources have been stripped out.
 
 ## Controls
 
