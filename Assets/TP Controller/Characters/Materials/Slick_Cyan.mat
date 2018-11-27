@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slick_Red
+  m_Name: Slick_Cyan
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _MATERIAL_FEATURE_IRIDESCENCE _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 1
@@ -263,8 +263,8 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.6886792, g: 0.13318795, b: 0.13318795, a: 1}
-    - _Color: {r: 0.6886792, g: 0.13318792, b: 0.13318792, a: 1}
+    - _BaseColor: {r: 0.07058822, g: 0.79667246, b: 0.85882354, a: 1}
+    - _Color: {r: 0.070588194, g: 0.7966725, b: 0.85882354, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}

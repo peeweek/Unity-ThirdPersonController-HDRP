@@ -1884,6 +1884,7 @@ GameObject:
   - component: {fileID: 4385383462609362606}
   - component: {fileID: 4385383462609362605}
   - component: {fileID: 4385383462609362604}
+  - component: {fileID: 9069721928466128738}
   m_Layer: 0
   m_Name: X-Bot
   m_TagString: Untagged
@@ -1918,7 +1919,7 @@ Animator:
   m_GameObject: {fileID: 4684345097293087179}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: bfc32e07751951f40a3a7af46052520e, type: 2}
-  m_Controller: {fileID: 9100000, guid: 3887175fbbc68cf4a813cb21295258b2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5a9859b1c3865074ca8fb1b47eb3ec8d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1958,6 +1959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  extensions:
+  - {fileID: 9069721928466128738}
   movementSettings:
     acceleration: 10
     walkSpeed: 2
@@ -1984,6 +1987,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda73d9ac200153488408c1b3f7cfb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9069721928466128738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684345097293087179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8084b6e274efbc545925b1facc4ca36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  AxisThreshold: 0.5
+  FireInput: Shoot
+  fireMode: 1
+  fireRate: 10
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &4684345097293087201
 GameObject:
   m_ObjectHideFlags: 0

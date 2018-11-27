@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Character : MonoBehaviour
 {
     // Serialized fields
     [SerializeField]
     private new Camera camera = null;
+
+    [SerializeField]
+    private CharacterExtension[] extensions = null;
 
     [SerializeField]
     private MovementSettings movementSettings = null;
@@ -45,6 +48,13 @@ public class Character : MonoBehaviour
 
         this.UpdateHorizontalSpeed();
         this.ApplyMotion();
+        if(extensions != null)
+        {
+            foreach(var extension in extensions)
+            {
+                if (extension != null) extension.UpdateExtension(this);
+            }
+        }
     }
 
     #endregion Unity Methods
