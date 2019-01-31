@@ -17,6 +17,11 @@ public class ShootingExtension : CharacterExtension
         Rate
     }
 
+    [Header("Objects")]
+    public GameObject WeaponPrefab;
+    public GameObject WeaponAttachmentSourceBone;
+    public GameObject WeaponAttachmentTargetBone;
+
     [Header("Input")]
     public InputMode mode = InputMode.Axis;
     public float AxisThreshold = 0.5f;
@@ -25,11 +30,10 @@ public class ShootingExtension : CharacterExtension
     [Header("Fire")]
     public FireMode fireMode = FireMode.Rate;
     public float fireRate = 10.0f;
-    public UnityEvent OnFire;
-
 
     // Private
     private Animator animator;
+    private WeaponRig weaponRig;
     private float ttl = 0.0f;
 
     public static readonly int SHOOTING = Animator.StringToHash("Shooting");
@@ -37,6 +41,10 @@ public class ShootingExtension : CharacterExtension
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        var weapon = Instantiate<GameObject>(WeaponPrefab);
+        weaponRig = weapon.GetComponent<WeaponRig>();
+        weaponRig.AttachmentSource = WeaponAttachmentSourceBone;
+        weaponRig.AttachmentTarget = WeaponAttachmentTargetBone;
     }
 
     public override void UpdateExtension(Character character)
@@ -62,7 +70,7 @@ public class ShootingExtension : CharacterExtension
             if(ttl <= 0.0f)
             {
                 // Shoot
-                OnFire.Invoke();
+                weaponRig.Fire();
                 ttl = 1.0f / fireRate;
             }
             else

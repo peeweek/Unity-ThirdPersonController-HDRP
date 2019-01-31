@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // Serialized fields
+    [Header("Camera")]
     [SerializeField]
-    private new CinemachineVirtualCameraBase virtualCamera = null;
+    private GameObject CameraRigPrefab = null;
+    [SerializeField]
+    private GameObject CameraFollowTarget = null;
+    [SerializeField]
+    private GameObject CameraLookAtTarget = null;
+
+    // Serialized fields
 
     [SerializeField]
     private CharacterExtension[] extensions = null;
@@ -24,6 +30,8 @@ public class Character : MonoBehaviour
     private Vector3 moveVector;
     private Quaternion controlRotation;
     private CharacterController controller;
+    private CinemachineVirtualCameraBase virtualCamera = null;
+
     private bool isWalking;
     private bool isJogging;
     private bool isSprinting;
@@ -37,10 +45,21 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         this.controller = this.GetComponent<CharacterController>();
-
         this.CurrentState = CharacterStateBase.GROUNDED_STATE;
-
         this.IsJogging = true;
+
+        if(CameraRigPrefab != null)
+        {
+            var cameraRig = Instantiate<GameObject>(CameraRigPrefab);
+            cameraRig.name = CameraRigPrefab.name;
+            virtualCamera = cameraRig.GetComponent<CinemachineVirtualCameraBase>();
+
+            if(CameraFollowTarget != null)
+                virtualCamera.Follow = CameraFollowTarget.transform;
+            if (CameraLookAtTarget != null)
+                virtualCamera.LookAt = CameraLookAtTarget.transform;
+        }
+
     }
 
     protected virtual void Update()

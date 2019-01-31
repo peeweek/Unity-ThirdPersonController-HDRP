@@ -1241,7 +1241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2f9fa4fe47ea94c9fb7ce83d43e264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCamera: {fileID: 0}
+  CameraRigPrefab: {fileID: 6541897821426417865, guid: 23eca59209677e14bb0beda68a55f43f,
+    type: 3}
+  CameraFollowTarget: {fileID: 3354862971841549540}
+  CameraLookAtTarget: {fileID: 8878277720566958892}
   extensions: []
   movementSettings:
     acceleration: 10
@@ -1317,7 +1320,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ccb50b4ae14623643b8edc9439a65929, type: 2}
+  - {fileID: 2100000, guid: 262bb20c6095c1245aaa10d20dd4c949, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

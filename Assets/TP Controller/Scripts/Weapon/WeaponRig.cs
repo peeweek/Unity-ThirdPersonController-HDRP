@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponRig : MonoBehaviour
 {
     public GameObject AttachmentSource;
     public GameObject AttachmentTarget;
+
+    public UnityEvent OnFire;
+
+    public void Fire()
+    {
+        OnFire.Invoke();
+    }
+
     void Start()
     {
         ParentRig();

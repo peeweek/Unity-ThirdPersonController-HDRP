@@ -15,8 +15,10 @@ public static class PlayerInput
         if (relativeCamera != null)
         {
             // Calculate the move vector relative to camera rotation
-            Vector3 scalerVector = new Vector3(1f, 0f, 1f);
-            Vector3 cameraForward = (relativeCamera.LookAt.position - relativeCamera.transform.position).normalized;
+
+            Vector3 cameraForward = (relativeCamera.LookAt.position - relativeCamera.transform.position);
+            cameraForward = new Vector3(cameraForward.x, 0, cameraForward.z).normalized; // Get Horizontal Direction (Normalized)
+
             Vector3 cameraRight = Vector3.Cross( relativeCamera.transform.up, cameraForward);
             moveVector = (cameraForward * verticalAxis + cameraRight * horizontalAxis);
         }
