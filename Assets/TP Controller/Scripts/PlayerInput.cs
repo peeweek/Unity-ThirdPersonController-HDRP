@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using Cinemachine;
+using UnityEngine;
 
 public static class PlayerInput
 {
     private static float lookAngle = 0f;
     private static float tiltAngle = 0f;
 
-    public static Vector3 GetMovementInput(Camera relativeCamera)
+    public static Vector3 GetMovementInput(CinemachineVirtualCameraBase relativeCamera)
     {
         Vector3 moveVector;
         float horizontalAxis = Input.GetAxis("Horizontal");
@@ -15,14 +16,14 @@ public static class PlayerInput
         {
             // Calculate the move vector relative to camera rotation
             Vector3 scalerVector = new Vector3(1f, 0f, 1f);
-            Vector3 cameraForward = Vector3.Scale(relativeCamera.transform.forward, scalerVector).normalized;
-            Vector3 cameraRight = Vector3.Scale(relativeCamera.transform.right, scalerVector).normalized;
-
+            Vector3 cameraForward = (relativeCamera.LookAt.position - relativeCamera.transform.position).normalized;
+            Vector3 cameraRight = Vector3.Cross( relativeCamera.transform.up, cameraForward);
             moveVector = (cameraForward * verticalAxis + cameraRight * horizontalAxis);
         }
         else
         {
             // Use world relative directions
+            Debug.LogWarning("PlayerInput.GetMovementInput : No Relative Camera Found.");
             moveVector = (Vector3.forward * verticalAxis + Vector3.right * horizontalAxis);
         }
 

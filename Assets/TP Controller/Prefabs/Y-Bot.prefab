@@ -1018,7 +1018,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3354862971841775812}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3354862971836340710
 SkinnedMeshRenderer:
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 32008179343772526}
   - component: {fileID: 7545153550440807711}
   m_Layer: 0
-  m_Name: Alpha
+  m_Name: Y-Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1185,6 +1185,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3769813060599173296}
   - {fileID: 3354862971841775814}
   - {fileID: 3354862971841775808}
   - {fileID: 3354862971841775822}
@@ -1240,7 +1241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2f9fa4fe47ea94c9fb7ce83d43e264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  virtualCamera: {fileID: 0}
+  extensions: []
   movementSettings:
     acceleration: 10
     walkSpeed: 2
@@ -1296,7 +1298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3354862971841775812}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3354862971836340708
 SkinnedMeshRenderer:
@@ -1521,7 +1523,7 @@ Transform:
   - {fileID: 3354862971841775936}
   - {fileID: 3354862971841775938}
   m_Father: {fileID: 3354862971841775812}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3354862971841549552
 GameObject:
@@ -2451,5 +2453,35 @@ Transform:
   - {fileID: 3354862971841775756}
   - {fileID: 3354862971841775802}
   m_Father: {fileID: 3354862971841775948}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8878277720566958892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3769813060599173296}
+  m_Layer: 0
+  m_Name: Camera-LookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3769813060599173296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878277720566958892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.481, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3354862971841775812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

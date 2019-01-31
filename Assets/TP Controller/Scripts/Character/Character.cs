@@ -1,10 +1,11 @@
+using Cinemachine;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
     // Serialized fields
     [SerializeField]
-    private new Camera camera = null;
+    private new CinemachineVirtualCameraBase virtualCamera = null;
 
     [SerializeField]
     private CharacterExtension[] extensions = null;
@@ -96,11 +97,11 @@ public class Character : MonoBehaviour
         }
     }
 
-    public Camera Camera
+    public CinemachineVirtualCameraBase VirtualCamera
     {
         get
         {
-            return this.camera;
+            return this.virtualCamera;
         }
     }
 
