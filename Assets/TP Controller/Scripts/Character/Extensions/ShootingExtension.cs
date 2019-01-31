@@ -34,14 +34,19 @@ public class ShootingExtension : CharacterExtension
     // Private
     private Animator animator;
     private WeaponRig weaponRig;
+    private Character character;
+
     private float ttl = 0.0f;
 
     public static readonly int SHOOTING = Animator.StringToHash("Shooting");
+    public static readonly int PITCH = Animator.StringToHash("Pitch");
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        var weapon = Instantiate<GameObject>(WeaponPrefab);
+        character = GetComponent<Character>();
+
+        var weapon = Instantiate(WeaponPrefab);
         weaponRig = weapon.GetComponent<WeaponRig>();
         weaponRig.AttachmentSource = WeaponAttachmentSourceBone;
         weaponRig.AttachmentTarget = WeaponAttachmentTargetBone;
@@ -58,8 +63,12 @@ public class ShootingExtension : CharacterExtension
         // Checks if not sprinting or falling/jumping
         firing = firing && !character.IsSprinting && character.IsGrounded;
 
+        // Calculate Pitch
+        float pitch = (character.VirtualCamera.LookAt.position - character.VirtualCamera.transform.position).normalized.y * 0.5f + 0.5f;
+
         // Sends state to animator
         animator.SetBool(SHOOTING, firing);
+        animator.SetFloat(PITCH, pitch);
 
         if (!firing)
         {
