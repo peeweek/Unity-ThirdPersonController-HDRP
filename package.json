@@ -1,0 +1,12 @@
+{
+    "name": "net.peeweek.third-person-controller",
+    "displayName": "3rd Person Controller",
+    "version": "0.0.1-preview",
+    "unity": "2018.3",
+    "description": "3rd Person Controller for Unity",
+    "dependencies":
+    {
+    	"com.unity.cinemachine" : "2.2.8",
+        "com.unity.render-pipelines.high-definition" : "4.9.0-preview"
+    }
+}
