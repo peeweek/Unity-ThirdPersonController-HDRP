@@ -6,18 +6,28 @@ namespace ThirdPersonController
 {
     public class Character : MonoBehaviour
     {
+        // Serialized fields
+
         [Header("Camera")]
+
         [SerializeField]
         private GameObject CameraRigPrefab = null;
+
         [SerializeField]
         private GameObject CameraFollowTarget = null;
+
         [SerializeField]
         private GameObject CameraLookAtTarget = null;
 
-        // Serialized fields
+        [SerializeField]
+        private Vector3  initialCameraPosition = new Vector3(0.0f,2.5f,3.0f);
+
+        [Header("Extensions")]
 
         [SerializeField]
         private CharacterExtension[] extensions = null;
+
+        [Header("Settings")]
 
         [SerializeField]
         private MovementSettings movementSettings = null;
@@ -33,7 +43,6 @@ namespace ThirdPersonController
         private Vector3 moveVector;
         private Quaternion controlRotation;
         private CharacterController controller;
-        private CameraRigBase cameraRig;
         private CinemachineVirtualCameraBase virtualCamera = null;
 
         private bool isWalking;
@@ -54,7 +63,7 @@ namespace ThirdPersonController
 
             if(CameraRigPrefab != null)
             {
-                var cameraPrefab = Instantiate<GameObject>(CameraRigPrefab);
+                var cameraPrefab = Instantiate<GameObject>(CameraRigPrefab, gameObject.transform.position + gameObject.transform.TransformVector(initialCameraPosition), Quaternion.identity);
                 cameraPrefab.name = CameraRigPrefab.name;
                 virtualCamera = cameraPrefab.GetComponent<CinemachineVirtualCameraBase>();
 
@@ -62,12 +71,7 @@ namespace ThirdPersonController
                     virtualCamera.Follow = CameraFollowTarget.transform;
                 if (CameraLookAtTarget != null)
                     virtualCamera.LookAt = CameraLookAtTarget.transform;
-
-                cameraRig = cameraPrefab.GetComponent<CameraRigBase>();
-                if(cameraRig != null)
-                cameraRig.Initialize(this);
             }
-
         }
 
         protected virtual void Update()
@@ -76,6 +80,7 @@ namespace ThirdPersonController
 
             this.UpdateHorizontalSpeed();
             this.ApplyMotion();
+
             if(extensions != null)
             {
                 foreach(var extension in extensions)

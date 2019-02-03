@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8194811909220715934}
   - component: {fileID: 8835663799200511944}
   - component: {fileID: 7241181846795982231}
-  - component: {fileID: 4350477321987381572}
   m_Layer: 0
   m_Name: TopDown-3rdPerson
   m_TagString: Untagged
@@ -101,19 +100,6 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
---- !u!114 &4350477321987381572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2343303154153884814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d2f0a8d125b71488509513b7f70b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VirtualCamera: {fileID: 8835663799200511944}
 --- !u!1 &4974537237342748480
 GameObject:
   m_ObjectHideFlags: 0
