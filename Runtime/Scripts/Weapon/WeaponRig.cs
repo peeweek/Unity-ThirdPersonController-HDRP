@@ -1,40 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponRig : MonoBehaviour
+namespace ThirdPersonController
 {
-    public GameObject AttachmentSource;
-    public GameObject AttachmentTarget;
-
-    public UnityEvent OnFire;
-
-    public void Fire()
+    public class WeaponRig : MonoBehaviour
     {
-        OnFire.Invoke();
-    }
+        public GameObject AttachmentSource;
+        public GameObject AttachmentTarget;
 
-    void Start()
-    {
-        ParentRig();
-    }
+        public UnityEvent OnFire;
 
-    void Update()
-    {
-        OrientRig();
-    }
+        public void Fire()
+        {
+            OnFire.Invoke();
+        }
 
-    void ParentRig()
-    {
-        transform.position = AttachmentSource.transform.position;
-        transform.rotation = AttachmentSource.transform.rotation;
-        transform.parent = AttachmentSource.transform;
-    }
+        void Start()
+        {
+            ParentRig();
+        }
 
-    void OrientRig()
-    {
-        if (AttachmentTarget != null)
-            transform.LookAt(AttachmentTarget.transform);
+        void Update()
+        {
+            OrientRig();
+        }
+
+        void ParentRig()
+        {
+            transform.position = AttachmentSource.transform.position;
+            transform.rotation = AttachmentSource.transform.rotation;
+            transform.parent = AttachmentSource.transform;
+        }
+
+        void OrientRig()
+        {
+            if (AttachmentTarget != null)
+                transform.LookAt(AttachmentTarget.transform);
+        }
     }
 }

@@ -1,18 +1,18 @@
-﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// The character is in the air, and he jumped to achieve that
-/// </summary>
-public class JumpingCharacterState : CharacterStateBase
+namespace ThirdPersonController
 {
-    public override void Update(Character character)
+    /// <summary>
+    /// The character is in the air, and he jumped to achieve that
+    /// </summary>
+    public class JumpingCharacterState : CharacterStateBase
     {
-        base.Update(character);
-
-        if (character.IsGrounded)
+        public override void Update(Character character)
         {
-            this.ToState(character, CharacterStateBase.GROUNDED_STATE);
+            base.Update(character);
+
+            if (character.IsGrounded)
+            {
+                this.ToState(character, CharacterStateBase.GROUNDED_STATE);
+            }
         }
     }
 }

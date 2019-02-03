@@ -1,54 +1,57 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-[Serializable]
-public class GravitySettings
+namespace ThirdPersonController
 {
-    [SerializeField]
-    [Tooltip("Acceleration, [0, Infinity)")]
-    private float gravityStrength = 27f;
-
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float maxFallSpeed = 38f;
-
-    [SerializeField]
-    [Tooltip("The constant gravity applied to the character when he is grounded, [0, Infinity)")]
-    private float groundedGravityForce = 9f;
-
-    public float GravityStrength
+    [Serializable]
+    public class GravitySettings
     {
-        get
-        {
-            return this.gravityStrength;
-        }
-        set
-        {
-            this.gravityStrength = value;
-        }
-    }
+        [SerializeField]
+        [Tooltip("Acceleration, [0, Infinity)")]
+        private float gravityStrength = 27f;
 
-    public float MaxFallSpeed
-    {
-        get
-        {
-            return this.maxFallSpeed;
-        }
-        set
-        {
-            this.maxFallSpeed = value;
-        }
-    }
+        [SerializeField]
+        [Tooltip("In meters/second, [0, Infinity)")]
+        private float maxFallSpeed = 38f;
 
-    public float GroundedGravityForce
-    {
-        get
+        [SerializeField]
+        [Tooltip("The constant gravity applied to the character when he is grounded, [0, Infinity)")]
+        private float groundedGravityForce = 9f;
+
+        public float GravityStrength
         {
-            return groundedGravityForce;
+            get
+            {
+                return this.gravityStrength;
+            }
+            set
+            {
+                this.gravityStrength = value;
+            }
         }
-        set
+
+        public float MaxFallSpeed
         {
-            this.groundedGravityForce = value;
+            get
+            {
+                return this.maxFallSpeed;
+            }
+            set
+            {
+                this.maxFallSpeed = value;
+            }
+        }
+
+        public float GroundedGravityForce
+        {
+            get
+            {
+                return groundedGravityForce;
+            }
+            set
+            {
+                this.groundedGravityForce = value;
+            }
         }
     }
 }

@@ -1,32 +1,32 @@
-﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// The character is on the ground
-/// </summary>
-public class GroundedCharacterState : CharacterStateBase
+namespace ThirdPersonController
 {
-    public override void Update(Character character)
+    /// <summary>
+    /// The character is on the ground
+    /// </summary>
+    public class GroundedCharacterState : CharacterStateBase
     {
-        base.Update(character);
-
-        character.ApplyGravity(true); // Apply extra gravity
-
-        if (PlayerInput.GetToggleWalkInput())
+        public override void Update(Character character)
         {
-            character.ToggleWalk();
-        }
+            base.Update(character);
 
-        character.IsSprinting = PlayerInput.GetSprintInput();
+            character.ApplyGravity(true); // Apply extra gravity
 
-        if (PlayerInput.GetJumpInput())
-        {
-            character.Jump();
-            this.ToState(character, CharacterStateBase.JUMPING_STATE);
-        }
-        else if (!character.IsGrounded)
-        {
-            this.ToState(character, CharacterStateBase.IN_AIR_STATE);
+            if (PlayerInput.GetToggleWalkInput())
+            {
+                character.ToggleWalk();
+            }
+
+            character.IsSprinting = PlayerInput.GetSprintInput();
+
+            if (PlayerInput.GetJumpInput())
+            {
+                character.Jump();
+                this.ToState(character, CharacterStateBase.JUMPING_STATE);
+            }
+            else if (!character.IsGrounded)
+            {
+                this.ToState(character, CharacterStateBase.IN_AIR_STATE);
+            }
         }
     }
 }

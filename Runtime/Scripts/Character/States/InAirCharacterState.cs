@@ -1,25 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// The character is in the air, but he didn't jump to achieve that
-/// </summary>
-public class InAirCharacterState : CharacterStateBase
+namespace ThirdPersonController
 {
-    public override void OnEnter(Character character)
+    /// <summary>
+    /// The character is in the air, but he didn't jump to achieve that
+    /// </summary>
+    public class InAirCharacterState : CharacterStateBase
     {
-        base.OnEnter(character);
-
-        character.ResetVerticalSpeed();
-    }
-
-    public override void Update(Character character)
-    {
-        base.Update(character);
-
-        if (character.IsGrounded)
+        public override void OnEnter(Character character)
         {
-            this.ToState(character, CharacterStateBase.GROUNDED_STATE);
+            base.OnEnter(character);
+
+            character.ResetVerticalSpeed();
+        }
+
+        public override void Update(Character character)
+        {
+            base.Update(character);
+
+            if (character.IsGrounded)
+            {
+                this.ToState(character, CharacterStateBase.GROUNDED_STATE);
+            }
         }
     }
 }

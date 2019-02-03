@@ -1,12 +1,13 @@
-﻿using System;
-
-public interface ICharacterState
+namespace ThirdPersonController
 {
-    void OnEnter(Character character);
+    public interface ICharacterState
+    {
+        void OnEnter(Character character);
 
-    void OnExit(Character character);
+        void OnExit(Character character);
 
-    void Update(Character character);
+        void Update(Character character);
 
-    void ToState(Character character, ICharacterState state);
+        void ToState(Character character, ICharacterState state);
+    }
 }

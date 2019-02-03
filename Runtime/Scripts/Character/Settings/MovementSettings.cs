@@ -1,86 +1,90 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-[Serializable]
-public class MovementSettings
+namespace ThirdPersonController
 {
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float acceleration = 10f;
+    [Serializable]
+    public class MovementSettings
+    {
+        [SerializeField]
+        [Tooltip("In meters/second, [0, Infinity)")]
+        private float acceleration = 10f;
 
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float walkSpeed = 2f;
+        [SerializeField]
+        [Tooltip("In meters/second, [0, Infinity)")]
+        private float walkSpeed = 2f;
 
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float jogSpeed = 4f;
+        [SerializeField]
+        [Tooltip("In meters/second, [0, Infinity)")]
+        private float jogSpeed = 4f;
 
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float sprintSpeed = 6f;
+        [SerializeField]
+        [Tooltip("In meters/second, [0, Infinity)")]
+        private float sprintSpeed = 6f;
 
-    [SerializeField]
-    [Tooltip("Force impulse, [0, Infinity)")]
-    private float jumpForce = 10f;
+        [SerializeField]
+        [Tooltip("Force impulse, [0, Infinity)")]
+        private float jumpForce = 10f;
     
-    public float Acceleration
-    {
-        get
+        public float Acceleration
         {
-            return this.acceleration;
+            get
+            {
+                return this.acceleration;
+            }
+            set
+            {
+                this.acceleration = value;
+            }
         }
-        set
-        {
-            this.acceleration = value;
-        }
-    }
 
-    public float WalkSpeed
-    {
-        get
+        public float WalkSpeed
         {
-            return this.walkSpeed;
+            get
+            {
+                return this.walkSpeed;
+            }
+            set
+            {
+                this.walkSpeed = value;
+            }
         }
-        set
-        {
-            this.walkSpeed = value;
-        }
-    }
 
-    public float JogSpeed
-    {
-        get
+        public float JogSpeed
         {
-            return this.jogSpeed;
+            get
+            {
+                return this.jogSpeed;
+            }
+            set
+            {
+                this.jogSpeed = value;
+            }
         }
-        set
-        {
-            this.jogSpeed = value;
-        }
-    }
 
-    public float SprintSpeed
-    {
-        get
+        public float SprintSpeed
         {
-            return this.sprintSpeed;
+            get
+            {
+                return this.sprintSpeed;
+            }
+            set
+            {
+                this.sprintSpeed = value;
+            }
         }
-        set
-        {
-            this.sprintSpeed = value;
-        }
-    }
 
-    public float JumpForce
-    {
-        get
+        public float JumpForce
         {
-            return this.jumpForce;
-        }
-        set
-        {
-            this.jumpForce = value;
+            get
+            {
+                return this.jumpForce;
+            }
+            set
+            {
+                this.jumpForce = value;
+            }
         }
     }
 }
+
