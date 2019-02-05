@@ -63,7 +63,8 @@ namespace ThirdPersonController
 
             if(CameraRigPrefab != null)
             {
-                var cameraPrefab = Instantiate<GameObject>(CameraRigPrefab, gameObject.transform.position + gameObject.transform.TransformVector(initialCameraPosition), Quaternion.identity);
+                var offset = gameObject.transform.TransformPoint(initialCameraPosition);
+                var cameraPrefab = Instantiate<GameObject>(CameraRigPrefab, offset, Quaternion.identity);
                 cameraPrefab.name = CameraRigPrefab.name;
                 virtualCamera = cameraPrefab.GetComponent<CinemachineVirtualCameraBase>();
 
