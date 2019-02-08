@@ -6,6 +6,13 @@ namespace ThirdPersonController
 {
     public class Character : MonoBehaviour
     {
+        public enum UpdateMode
+        {
+            Update,
+            LateUpdate,
+            FixedUpdate
+        }
+
         // Serialized fields
 
         [Header("Camera")]
@@ -28,6 +35,9 @@ namespace ThirdPersonController
         private CharacterExtension[] extensions = null;
 
         [Header("Settings")]
+
+        [SerializeField]
+        private UpdateMode updateMode = UpdateMode.FixedUpdate;
 
         [SerializeField]
         private MovementSettings movementSettings = null;
@@ -75,21 +85,40 @@ namespace ThirdPersonController
             }
         }
 
-        protected virtual void Update()
+        private void FixedUpdate()
+        {
+            if (updateMode == UpdateMode.FixedUpdate)
+                UpdateCharacter();
+        }
+
+        private void Update()
+        {
+            if (updateMode == UpdateMode.Update)
+                UpdateCharacter();
+        }
+
+        private void LateUpdate()
+        {
+            if (updateMode == UpdateMode.LateUpdate)
+                UpdateCharacter();
+        }
+
+        private void UpdateCharacter()
         {
             this.CurrentState.Update(this);
 
             this.UpdateHorizontalSpeed();
             this.ApplyMotion();
 
-            if(extensions != null)
+            if (extensions != null)
             {
-                foreach(var extension in extensions)
+                foreach (var extension in extensions)
                 {
                     if (extension != null) extension.UpdateExtension(this);
                 }
             }
         }
+
 
         #endregion Unity Methods
 
