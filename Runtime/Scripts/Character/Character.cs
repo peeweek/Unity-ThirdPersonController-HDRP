@@ -1,6 +1,6 @@
 using Cinemachine;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 namespace ThirdPersonController
 {
@@ -14,6 +14,9 @@ namespace ThirdPersonController
         }
 
         // Serialized fields
+        [Header("Character Controller")]
+        public CharacterController controller;
+
 
         [Header("Camera")]
 
@@ -29,12 +32,24 @@ namespace ThirdPersonController
         [SerializeField]
         private Vector3  initialCameraPosition = new Vector3(0.0f,2.5f,3.0f);
 
+        [Header("NavMesh")]
+        public NavMeshAgent navMeshAgent = null;
+
         [Header("Extensions")]
 
         [SerializeField]
         private CharacterExtension[] extensions = null;
 
+        public enum ControlMode
+        {
+            Player,
+            NavMesh
+        }
+
         [Header("Settings")]
+
+        [SerializeField]
+        private ControlMode controlMode = ControlMode.Player;
 
         [SerializeField]
         private UpdateMode updateMode = UpdateMode.FixedUpdate;
@@ -52,7 +67,6 @@ namespace ThirdPersonController
         // Private fields
         private Vector3 moveVector;
         private Quaternion controlRotation;
-        private CharacterController controller;
         private CinemachineVirtualCameraBase virtualCamera = null;
 
         private bool isWalking;
@@ -67,8 +81,8 @@ namespace ThirdPersonController
 
         protected virtual void Awake()
         {
-            this.controller = this.GetComponent<CharacterController>();
-            this.CurrentState = CharacterStateBase.GROUNDED_STATE;
+            SetControlState(controlMode);
+
             this.IsJogging = true;
 
             if(CameraRigPrefab != null)
@@ -118,7 +132,6 @@ namespace ThirdPersonController
                 }
             }
         }
-
 
         #endregion Unity Methods
 
@@ -289,7 +302,10 @@ namespace ThirdPersonController
         {
             get
             {
-                return this.controller.isGrounded;
+                if (controlMode == ControlMode.Player)
+                    return this.controller.isGrounded;
+                else
+                    return true;
             }
         }
 
@@ -297,7 +313,10 @@ namespace ThirdPersonController
         {
             get
             {
-                return this.controller.velocity;
+                if (controlMode == ControlMode.Player)
+                    return this.controller.velocity;
+                else
+                    return this.navMeshAgent.velocity;
             }
         }
 
@@ -390,12 +409,30 @@ namespace ThirdPersonController
             }
         }
 
+        private void SetControlState(ControlMode newControlMode)
+        {
+            controlMode = newControlMode;
+
+            if (controlMode == ControlMode.Player)
+                this.CurrentState = CharacterStateBase.GROUNDED_STATE;
+            else if (controlMode == ControlMode.NavMesh)
+                this.CurrentState = AICharacterStateBase.GROUNDED_STATE;
+
+            controller.enabled = controlMode == ControlMode.Player;
+
+            if(navMeshAgent != null)
+                navMeshAgent.enabled = controlMode == ControlMode.NavMesh;
+        }
+
         private void ApplyMotion()
         {
             this.OrientRotationToMoveVector(this.MoveVector);
 
             Vector3 motion = this.MoveVector * this.currentHorizontalSpeed + Vector3.up * this.currentVerticalSpeed;
-            this.controller.Move(motion * Time.deltaTime);
+            if (controlMode == ControlMode.Player)
+                this.controller.Move(motion * Time.deltaTime);
+            else
+                this.navMeshAgent.Move(motion * Time.deltaTime);
         }
 
         private bool AlignRotationWithControlRotationY()

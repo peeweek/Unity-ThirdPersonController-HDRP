@@ -1961,12 +1961,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2f9fa4fe47ea94c9fb7ce83d43e264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 4385383462609362606}
   CameraRigPrefab: {fileID: 6541897821426417865, guid: 23eca59209677e14bb0beda68a55f43f,
     type: 3}
   CameraFollowTarget: {fileID: 4684345097293087179}
   CameraLookAtTarget: {fileID: 8994380462332803022}
+  initialCameraPosition: {x: 0, y: 2.5, z: 3}
+  navMeshAgent: {fileID: 0}
   extensions:
   - {fileID: 9069721928466128738}
+  controlMode: 0
+  updateMode: 2
   movementSettings:
     acceleration: 10
     walkSpeed: 2
@@ -2014,6 +2019,7 @@ MonoBehaviour:
   FireInput: Shoot
   fireMode: 1
   fireRate: 10
+  ApplySpinePitch: 1
 --- !u!54 &7658683962091257443
 Rigidbody:
   m_ObjectHideFlags: 0
