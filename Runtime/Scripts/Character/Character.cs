@@ -81,7 +81,7 @@ namespace ThirdPersonController
 
         protected virtual void Awake()
         {
-            SetControlState(controlMode);
+            SetControlMode(controlMode);
 
             this.IsJogging = true;
 
@@ -409,7 +409,7 @@ namespace ThirdPersonController
             }
         }
 
-        private void SetControlState(ControlMode newControlMode)
+        public void SetControlMode(ControlMode newControlMode)
         {
             controlMode = newControlMode;
 
@@ -426,9 +426,11 @@ namespace ThirdPersonController
 
         private void ApplyMotion()
         {
-            this.OrientRotationToMoveVector(this.MoveVector);
+            if(controlMode == ControlMode.Player)
+                this.OrientRotationToMoveVector(this.MoveVector);
 
             Vector3 motion = this.MoveVector * this.currentHorizontalSpeed + Vector3.up * this.currentVerticalSpeed;
+
             if (controlMode == ControlMode.Player)
                 this.controller.Move(motion * Time.deltaTime);
             else
