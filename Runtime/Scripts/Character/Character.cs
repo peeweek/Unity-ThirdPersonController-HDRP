@@ -88,15 +88,24 @@ namespace ThirdPersonController
             if(CameraRigPrefab != null)
             {
                 var offset = gameObject.transform.TransformPoint(initialCameraPosition);
-                var cameraPrefab = Instantiate<GameObject>(CameraRigPrefab, offset, Quaternion.identity);
-                cameraPrefab.name = CameraRigPrefab.name;
-                virtualCamera = cameraPrefab.GetComponent<CinemachineVirtualCameraBase>();
+                var cameraInstance = Instantiate<GameObject>(CameraRigPrefab, offset, Quaternion.identity);
+                cameraInstance.name = CameraRigPrefab.name;
+                virtualCamera = cameraInstance.GetComponent<CinemachineVirtualCameraBase>();
+
+                cameraInstance.transform.parent = this.transform;
 
                 if(CameraFollowTarget != null)
                     virtualCamera.Follow = CameraFollowTarget.transform;
                 if (CameraLookAtTarget != null)
                     virtualCamera.LookAt = CameraLookAtTarget.transform;
             }
+        }
+
+        private void OnDestroy()
+        {
+            // Recycle Virtual Camera when destroying character
+            if (virtualCamera != null)
+                Destroy(VirtualCamera.gameObject);
         }
 
         private void FixedUpdate()
