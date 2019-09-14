@@ -427,7 +427,10 @@ namespace ThirdPersonController
             else if (controlMode == ControlMode.NavMesh)
                 this.CurrentState = AICharacterStateBase.GROUNDED_STATE;
 
+#if UNITY_2019_3_OR_NEWER
+#else
             controller.enabled = controlMode == ControlMode.Player;
+#endif
 
             if(navMeshAgent != null)
                 navMeshAgent.enabled = controlMode == ControlMode.NavMesh;
