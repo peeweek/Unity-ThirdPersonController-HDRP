@@ -6,6 +6,10 @@ namespace ThirdPersonController
 {
     public class Character : MonoBehaviour
     {
+        public CharacterInput input { get => m_CharacterInput; }
+        [SerializeField, Header("Input")]
+        CharacterInput m_CharacterInput;
+
         public enum UpdateMode
         {
             Update,

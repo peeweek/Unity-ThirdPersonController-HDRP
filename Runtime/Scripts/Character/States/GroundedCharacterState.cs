@@ -11,14 +11,14 @@ namespace ThirdPersonController
 
             character.ApplyGravity(true); // Apply extra gravity
 
-            if (PlayerInput.GetToggleWalkInput())
+            if (character.input.walk)
             {
                 character.ToggleWalk();
             }
 
-            character.IsSprinting = PlayerInput.GetSprintInput();
+            character.IsSprinting = character.input.sprint;
 
-            if (PlayerInput.GetJumpInput())
+            if (character.input.jump)
             {
                 character.Jump();
                 this.ToState(character, CharacterStateBase.JUMPING_STATE);
