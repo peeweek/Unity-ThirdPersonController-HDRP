@@ -237,19 +237,6 @@ namespace ThirdPersonController
             }
         }
 
-        public Quaternion ControlRotation
-        {
-            get
-            {
-                return this.controlRotation;
-            }
-            set
-            {
-                this.controlRotation = value;
-                this.AlignRotationWithControlRotationY();
-            }
-        }
-
         public bool IsWalking
         {
             get
@@ -451,17 +438,6 @@ namespace ThirdPersonController
                 this.controller.Move(motion * Time.deltaTime);
             else
                 this.navMeshAgent.Move(motion * Time.deltaTime);
-        }
-
-        private bool AlignRotationWithControlRotationY()
-        {
-            if (this.RotationSettings.UseControlRotation)
-            {
-                this.transform.rotation = Quaternion.Euler(0f, this.ControlRotation.eulerAngles.y, 0f);
-                return true;
-            }
-
-            return false;
         }
 
         private bool OrientRotationToMoveVector(Vector3 moveVector)

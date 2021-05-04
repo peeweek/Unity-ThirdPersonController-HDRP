@@ -24,7 +24,6 @@ namespace ThirdPersonController
             }
 
             character.MoveVector = GetMovementInput(character.input, character.VirtualCamera.transform, character.VirtualCamera.LookAt.transform);
-            character.ControlRotation = GetMouseRotationInput(character.input);
         }
 
         public virtual void ToState(Character character, ICharacterState state)
@@ -69,28 +68,6 @@ namespace ThirdPersonController
             }
 
             return moveVector;
-        }
-
-        private float lookAngle = 0f;
-        private float tiltAngle = 0f;
-
-        Quaternion GetMouseRotationInput(CharacterInput input,  float mouseSensitivity = 3f, float minTiltAngle = -75f, float maxTiltAngle = 45f)
-        {
-            Vector2 axis = input.look;
-            float mouseX = axis.x;
-            float mouseY = axis.y;
-
-            // Adjust the look angle (Y Rotation)
-            lookAngle += mouseX * mouseSensitivity;
-            lookAngle %= 360f;
-
-            // Adjust the tilt angle (X Rotation)
-            tiltAngle += mouseY * mouseSensitivity;
-            tiltAngle %= 360f;
-            tiltAngle = MathfExtensions.ClampAngle(tiltAngle, minTiltAngle, maxTiltAngle);
-
-            var controlRotation = Quaternion.Euler(-tiltAngle, lookAngle, 0f);
-            return controlRotation;
         }
     }
 }
