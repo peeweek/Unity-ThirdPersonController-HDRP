@@ -132,6 +132,11 @@ namespace ThirdPersonController
 
         private void UpdateCharacter()
         {
+            if(controlMode == ControlMode.Player && input == null)
+            {
+                Debug.LogWarning("Character has no Character Input Set up. Please add a character input component suiting your Input System method and reference it", this);
+            }
+
             this.CurrentState.Update(this);
 
             this.UpdateHorizontalSpeed();
