@@ -6,6 +6,10 @@ namespace ThirdPersonController
 {
     public class Character : MonoBehaviour
     {
+        public CharacterInput input { get => m_CharacterInput; }
+        [SerializeField, Header("Input")]
+        CharacterInput m_CharacterInput;
+
         public enum UpdateMode
         {
             Update,
@@ -128,6 +132,11 @@ namespace ThirdPersonController
 
         private void UpdateCharacter()
         {
+            if(controlMode == ControlMode.Player && input == null)
+            {
+                Debug.LogWarning("Character has no Character Input Set up. Please add a character input component suiting your Input System method and reference it", this);
+            }
+
             this.CurrentState.Update(this);
 
             this.UpdateHorizontalSpeed();
@@ -230,19 +239,6 @@ namespace ThirdPersonController
             set
             {
                 this.rotationSettings = value;
-            }
-        }
-
-        public Quaternion ControlRotation
-        {
-            get
-            {
-                return this.controlRotation;
-            }
-            set
-            {
-                this.controlRotation = value;
-                this.AlignRotationWithControlRotationY();
             }
         }
 
@@ -447,17 +443,6 @@ namespace ThirdPersonController
                 this.controller.Move(motion * Time.deltaTime);
             else
                 this.navMeshAgent.Move(motion * Time.deltaTime);
-        }
-
-        private bool AlignRotationWithControlRotationY()
-        {
-            if (this.RotationSettings.UseControlRotation)
-            {
-                this.transform.rotation = Quaternion.Euler(0f, this.ControlRotation.eulerAngles.y, 0f);
-                return true;
-            }
-
-            return false;
         }
 
         private bool OrientRotationToMoveVector(Vector3 moveVector)
