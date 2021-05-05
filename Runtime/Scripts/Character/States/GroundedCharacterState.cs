@@ -19,7 +19,7 @@ namespace ThirdPersonController
                 character.ToggleWalk();
             }
 
-            character.IsSprinting = character.input.sprint == CharacterInput.ButtonState.Pressed || character.input.sprint == CharacterInput.ButtonState.Released;
+            character.IsSprinting = character.input.sprint == CharacterInput.ButtonState.Pressed || character.input.sprint == CharacterInput.ButtonState.JustPressed;
 
             if (character.input.jump == CharacterInput.ButtonState.JustPressed)
             {
